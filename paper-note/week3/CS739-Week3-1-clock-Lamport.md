@@ -1,6 +1,6 @@
 `@Author: Junda Chen`
 
-# CS739 - Week3-1 Note: Clock
+# CS739 - Week3-1: Clock
 
 Time, Clocks, and the Ordering of Events in a Distributed System 
 
@@ -8,15 +8,13 @@ Leslie Lamport, 1978
 
 ---
 
-# One-line Summary
+# Summary
 
 By defining partial relation and a feasible synchronizing algorithm by locally checking timestamp, processes can be synchronized with a system physical clock.
 
 
 
-# Highlights
-
-![image-20180920231348536](assets/image-20180920231348536.png)
+[TOC]
 
 
 
@@ -34,8 +32,6 @@ By defining partial relation and a feasible synchronizing algorithm by locally c
 
 > In this paper, we discuss the **partial ordering** defined by the "happened before" relation, and give a distributed algorithm for **extending it to a consistent total ordering of all the events.**This algorithm can provide a useful mechanism for implementing a distributed system. We illustrate its use with a simple method for solving syn- chronization problems. 
 >
->
->
 > Unexpected, anomalous behavior can occur if the ordering obtained by this algorithm differs from that perceived by the user.
 >
 > **This can be avoided by introducing real, physical clocks.** 
@@ -44,9 +40,9 @@ By defining partial relation and a feasible synchronizing algorithm by locally c
 
 ### Questions
 
-**How to go from Partial order -> full order?**
+**1. How to go from Partial order -> full order?**
 
-**How to introducint a real, physical clock to synchronize all the components**?
+**2. How to introducint a real, physical clock to synchronize all the components**?
 
 
 
@@ -58,9 +54,11 @@ By defining partial relation and a feasible synchronizing algorithm by locally c
 
 
 
-### Process = {(event, time)}
+### Process = `{(event, time)}`
 
-> a single process is defined to be a set of events with an a priori total ordering.
+> a single process is defined to be **a set of events** with an a **priori total ordering**.
+
+Each event is associated with a time (a number in the fully-ordered set)
 
 
 
@@ -79,7 +77,8 @@ By defining partial relation and a feasible synchronizing algorithm by locally c
 
 (Just for fun) Space-time invariant property
 
-> This definition will appear quite natural to the reader
+> # This definition will appear quite natural to the reader
+>
 > familiar with the invariant space-time formulation of
 > special relativity, as described for example in [1] or the
 > first chapter of [2]. In relativity, the ordering of events is
@@ -122,9 +121,7 @@ Space-time Digram
 >
 > Condition C2 means that every message line must cross a tick line. 
 
-
-
-（Bullshit)
+(Common knowledge)
 
 > Without introducing the concept of physical time into the system (which requires introducing physical clocks), there is no way to decide which of these pictures is a better representation.
 
@@ -136,6 +133,8 @@ Space-time Digram
 2. IR2: $C_j(now)$ > $C_j(prev)$ $T_m = C_i(a)$ time stamp of send. 
 
 
+
+
 ## Ordering the Events Totally
 
 > The ordering $\Rightarrow$ depends upon the system of clocks $C_i$, and is <u>not unique</u>. ... It is only the partial order that is uniquely defined by the systems of events.
@@ -143,6 +142,8 @@ Space-time Digram
 The total order exist, but there is no unique total order.
 
 **So how shall we choose a total order?**
+
+
 
 ### Case Analysis: Mutual Exclusion Problem
 
@@ -157,6 +158,8 @@ The total order exist, but there is no unique total order.
 > (We assume that the resource is initially granted to exactly one process.)
 >
 > Condition II says nothing about which of two concurrently issued *requests* should be granted first.
+
+
 
 #### Solution Algorithm
 
@@ -240,7 +243,7 @@ Notation
 
 IR1. 
 
-For each i, if Pi does not receive a message at physical time t, then C/is differentiable at t and dCg(t)/dt >0. 
+For each i, if Pi does not receive a message at physical time t, then C/is differentiable at t and $dCg(t)/dt >0$. 
 
 
 
@@ -265,3 +268,11 @@ Notation
 ## Conclusion
 
 Appendix: Proof of the Theorem
+
+
+
+# Side Note
+
+1. About Lamport
+
+![image-20180920231348536](CS739-Week3-1-clock-Lamport.assets/image-20180920231348536.png)

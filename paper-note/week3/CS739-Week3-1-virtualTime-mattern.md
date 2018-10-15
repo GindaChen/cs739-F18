@@ -8,19 +8,26 @@ Friedemann Mattern, Germany, 1988
 
 ---
 
-# Highlight
+# Summary
 
 [Lamport] Logical clock + Time update is good. But linear relation of time mapping is not good.
 
-To preserve causality, lattice structure is a must.
+To preserve causality, lattice structure and vector time is a must.
 
-Virtual time define some protocol for everyone to respect.
-
-Vector time structure allows different process events with causality to propagate the time and recorded in local process structure. 
+Vector time structure allows different process events with causality to propagate their time and record the time in local process structure. 
 
 Since lattice of consistent cut is isomorphic to lattice of possible time vectors, time vectors can identify a consistent cuts, and a consistent cut can also be be identified by its timestamp using $t_X$ .
 
----
+
+
+[TOC]
+
+# Reminder
+
+1. **Theorem 5, 9** is The most important theorem.
+2. **Cut** and **Consistent Cuts** are the most confusing definitions.
+3. *Minkowski Time-space invariant property* is of no importance here.
+4. This paper is long. I spent an easy 45 mins reading Lamport, and spent nearly 2 hours reading this one. This one is interesting, but it's easy that you get lost in some of the concepts (if you don't know what is cut and lattice).
 
 
 
@@ -30,21 +37,17 @@ Since lattice of consistent cut is isomorphic to lattice of possible time vector
 
 ### Core problems
 
-Distributed agreement
-
-Distributed termination detection
-
-symmetry breaking / election problem
+- Distributed agreement
+- Distributed termination detection
+- Symmetry breaking / Election problem
 
 
 
 ### Feasible solution
 
-#### 1. Synchronizer: simuulate a synchronous distributed system
+#### 1. Synchronizer: simulate a synchronous distributed system
 
-clock pulse
-
-overhead is high
+Clock pulse: overhead is high
 
 
 
@@ -52,7 +55,7 @@ overhead is high
 
 **--> Lamport 1978 -> Morgan[11]; Neiger and Toueg[12]**
 
-Doesnot need additional information
+Does not need additional information
 
 Virtual time implemented by logical clock
 
@@ -64,27 +67,23 @@ Virtual time implemented by logical clock
 
 **Concurrent common knowledge [14, Panangaden, Taylor]**
 
-
-
--> Idea: Compute the *best appocimation* of the global state
-
-
+-> Idea: Compute the *best appoximation* of the global state
 
 
 
 ### Problems
 
-[Lamport 1978] map partial information to a linear structure.
+[Lamport 1978] maps partial information to a linear structure.
 
-=> Lose information: distributed debugging, mutual exclusion etc.
+<u>=> Lose information: distributed debugging, mutual exclusion etc.</u>
 
-> events that happen simultaneously have different time stamps as if they happen in different order.
+> Events that happen simultaneously have different time stamps as if they happen in different order. So **can we preserve the order AND the information of whether they're mutually excluding each other? ** 
 
 
 
 ### **All events which are not causally related are simultaneous.** Thus causality become isomorphic.
 
-idealized time (supremum of all local clock vectors)
+Idealized time (supremum of all local clock vectors: $t_i = \sup\{\vec{v_i}\}$)
 
 
 
@@ -92,27 +91,21 @@ idealized time (supremum of all local clock vectors)
 
 ## 2. Event structures
 
-**Events**
+### @Category: Events
 
-- internal event
-- send event
-- receive event
+- Internal event
+- Send event
+- Receive event
 
 **Message-driven Distrubuted System**
 
-[Actor Model](https://zh.wikipedia.org/wiki/參與者模式)
-
-
-
-一切皆是参与者 (everything is actor == everything is object)
+[Actor Model](https://zh.wikipedia.org/wiki/參與者模式): 一切皆是参与者 (everything is actor [== everything is object] )
 
 Originally in Carl Hewitt; Peter Bishop and Richard Steiger. [A Universal Modular Actor Formalism for Artificial Intelligence](https://web.archive.org/web/20091229084457/http://dli.iiit.ac.in/ijcai/IJCAI-73/PDF/027B.pdf) (PDF). IJCAI. 1973.
 
 
 
-
-
-**Events are related**
+### Events are related
 
 1. Events are totally ordered in process
 2. Each receive event has a corresponding send event
@@ -135,29 +128,25 @@ E := set of events;
 
 **Timing digram**: a poset-digram
 
-**equivalent** causality relation.
-
-**equivalence transfomration on time digrams** leaves causality relation invariant
+**Equivalent** causality relation:**Equivalence transfomration on time digrams** leaves causality relation invariant
 
 
 
 ## 3. Consistent Cuts
 
+### @Define: Consistent Cut = a set of concurrent events
 
-
-<u>Cut, Consistent cut = set of concurrent events</u>
-
-
+<u>Consistent cut = a set of concurrent events</u> *(this is a very confusing definition. Make sure you know what is cut and what is consistent cut)*.
 
 All local actions triggered by the message are not guaranteed to perform in the same future "physical" time.
 
 
 
-**Cut, cut line**: a series of cut events that seperate the whole graphs into two parts: PAST and FUTURE.
+**Cut, cut line**: a series of cut events that seperate the whole graphs into two parts: `PAST` and `FUTURE`.
 
 
 
-Notation
+**Notation**
 
 $c_i$: cut event
 
@@ -185,6 +174,8 @@ Mind that we are using $<_l$ local relation. The *consistent cut* will use the g
 
 - Transitive
 - Reflexive
+
+
 
 ### **Theorem 1: Lattice**
 
@@ -232,21 +223,28 @@ left-closed under causality relation $<$
 
 **Snapshot problem**: yield only consistent cuts + collect local state info + capture send-event
 
-
-
 (Lamport 1978: FIFO message transmission)
+
+
 
 ## 5. The concept of Time
 
-Real time
+How do we define what is
 
-Causality-represented time
-
-timestamp: $t(\cdot)$
-
+- **Real time**
+- **Causality-represented time**
 
 
-### Distributed algorithm factorization (Morgan[11]):
+
+**Notation**
+
+$t(\cdot)$ : timestamp
+
+
+
+### Distributed algorithm factorization 
+
+Morgan[11]:
 
 1. Global time available to all process
 2. virtual time clock sync to approximate global time
@@ -258,6 +256,10 @@ timestamp: $t(\cdot)$
 3. What is essential structure of real time?
 
 ### Time: instances + temporal precedence order
+
+
+
+**Property of the Time:**
 
 1. Transitivity
 2. Irreflexivity 
@@ -390,7 +392,7 @@ Potential concurrency: degree of parallelism
 
 Detect mutual inconsistencies of multiple file copies [15]: **version vector, version conflict**
 
-**? Is version control and distributed system version vector of the same origin ?**
+
 
 
 
@@ -404,11 +406,7 @@ Idea: It's never too late to take a snapshot of "now" as long as you choose a fu
 
 When time comes, do the **time-leap**.
 
-
-
-**@Questions**
-
-a counter modulo 2 is sufficient??
+==**@Question**: a counter modulo 2 is sufficient?? In the paper it mentioned that a counter modulo 2 is sufficient to store the time. Why?==
 
 
 
@@ -435,3 +433,12 @@ a priori: 演繹（えんえき）的な[に]; 先天[先験]的な[に] ([↔ a
 
 
 
+
+
+# Questions
+
+
+
+==**@Question 1**: a counter modulo 2 is sufficient?? In the paper it mentioned that a counter modulo 2 is sufficient to store the time. Why?==
+
+==**@Question 2: **Is version control and distributed system version vector of the same origin ?==
