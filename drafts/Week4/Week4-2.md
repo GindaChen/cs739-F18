@@ -9,18 +9,6 @@ All File Systems Are Not Created Equal: On the Complexity of Crafting Crash-Cons
 Thanumalayan Sankaranarayana, Pillai Vijay Chidambaram, Ramnatthan Alagappan
 Samer Al-Kiswany, Andrea C. Arpaci-Dusseau, Remzi H. Arpaci-Dusseau
 
-```
-Q5 (due 9/28 @ 11am): Which type of vulnerability uncovered by ALICE is least realistic/important? Which is most important and should be addressed by application developers?
-
-The most/least important vulnerbility is actually judged by the "common sense". If the vulnerability is foresee and commonly avoided by a majority of the developers, they are less important; otherwise, it's important to address.
-
-Least important: Multi-block write sync. Although it might be important in some application, developers are generally awared that when they want multiple blocks to be written, synchronization is not guaranteed.
-
-Most  important: Silent error and Data loss (appearantly). Such errors are not easily fixable, and also hard to trace in real life.
-
-
-```
-
 
 
 # Highlight

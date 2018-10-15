@@ -15,7 +15,7 @@
 - User-level thread: looks like a process to the OS
 - Kernel-level thread: OS schedules each thread
 
-#### Thread Pool Model `(P3)`
+#### Thread Pool Model `(CS537, P3)`
 
 - Prevent the overload: when latency and bandwidth become significantly bad in the world of too many requests => Bounded requests to handle.
 - Control scheduling:

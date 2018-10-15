@@ -122,9 +122,7 @@ Space-time Digram
 >
 > Condition C2 means that every message line must cross a tick line. 
 
-
-
-（Bullshit)
+(Common knowledge)
 
 > Without introducing the concept of physical time into the system (which requires introducing physical clocks), there is no way to decide which of these pictures is a better representation.
 
@@ -136,6 +134,8 @@ Space-time Digram
 2. IR2: $C_j(now)$ > $C_j(prev)$ $T_m = C_i(a)$ time stamp of send. 
 
 
+
+
 ## Ordering the Events Totally
 
 > The ordering $\Rightarrow$ depends upon the system of clocks $C_i$, and is <u>not unique</u>. ... It is only the partial order that is uniquely defined by the systems of events.
@@ -143,6 +143,8 @@ Space-time Digram
 The total order exist, but there is no unique total order.
 
 **So how shall we choose a total order?**
+
+
 
 ### Case Analysis: Mutual Exclusion Problem
 
@@ -240,7 +242,7 @@ Notation
 
 IR1. 
 
-For each i, if Pi does not receive a message at physical time t, then C/is differentiable at t and dCg(t)/dt >0. 
+For each i, if Pi does not receive a message at physical time t, then C/is differentiable at t and $dCg(t)/dt >0$. 
 
 
 
