@@ -1,0 +1,76 @@
+
+9/12 Discussion notes
+Gray Questions
+ 
+What is availability? Reliability?
+Reliability: Not do the wrong thing / basic correctness. Proportional to Mean Time Between Failure (MTBF)
+Availability: System uptime. Can be expressed as MTBF/(MTBF + MTTR) where MTTR is Mean Time To Repair
+
+Increasing availability can be done by increasing MTBF or reducing MTTR. It’s easier to focus on the latter as it is possible to benchmark and test with rapid iteration. Trying to test the increase in MTBF of say 3 years would take … 3 years?
+ 
+How to build reliable hardware from unreliable components?
+Modularity & isolation is important - pieces fail independently and don’t take the whole system down.
+Von Neumann tried, but failed - why?
+Because he didn’t take modularity into consideration.
+Key ideas?
+Modularity: Break large system into small pieces. These pieces are isolated from each other so they can fail independently.
+Redundancy: More than one module for each part.
+The paper introduces the notion of a fault model - to fail fast.
+ 
+What is left after hardware is build properly?
+Software development issues and operations. This was a new idea at the time because building hardware reliably was the focus. 
+
+Study: How is this study performed?
+The study was performed with customers’ reports. Although, these were underreported as only faults that the customer felt were the vendor’s responsibility were reported. This study is a good place to start but it isn’t wholistic. We don’t know the quality of the sample and there isn’t a ton of depth in them. It is worth noting that each study in this direction of work has its own issue with data.
+ 
+Conclusions from the study: keys to HA are?
+He thinks hardware is already quite fault-tolerant. So we should focus more on software and operations side.
+
+Software fault model: fail fast. What is it? How to build? (covered earlier).
+
+Remaining bugs: Heisenbugs (vs Bohrbugs). What implications for system design?
+Heisenbugs - transient errors such as race conditions. Restarting the system is a good solution (reboot is considered a fundamental design technique as it gives you a clean slate). Changing a small thing in the environment can make it less likely for the bug to occur again - for e.g. allocating slightly more memory than what was asked for.
+Bohrbugs - very repeatable. This is a good thing because the bug is then reproducible. A good software development cycle can iron out these bugs.
+
+He talks about having a transactional system which allows you to abort in the middle without corrupting the system. This works naturally with the notion that there are transient problems which can be solved by just aborting and trying again.
+ 
+Schroeder
+Study: How is this work done?
+Data is from hardware replacement logs provided by the disks’ customers/users.
+This study wants to reveal the difference between the real-world situation and what the disk vendors give you.
+Weird disk problems that Netapp had to deal with -
+Drives would occasionally right shift all the data
+Lost write problem - the drive says it wrote something but it didn’t
+
+What is the definition of a failed disk?
+The customers think it is considered failed if it does not pass their own set of tests in their test environment. (which vendors might disagree because they are using different tests under different tests environment)
+
+What types of failure are not included in study?
+
+Batch failure is not included.
+
+What do we learn about h/w vs s/w cause of outage?
+They found 50% of an outage is caused by hardware while 20% of an outage is caused by software in HPC systems. Times change and people know a lot better how to manage systems now. Also, it is hard to draw generalizations as these numbers are for HPC systems specifically.
+
+What are the common causes of hardware trouble?
+Table 3 in the paper describes the common causes - disks, CPU, memory
+
+What do we learn from Figure 1?
+From Fig1, there is a big difference between customers’ Annual Replacement Rate v.s. The Annual Failure Rate that vendors provide. This means that we need better metrics to estimate the frequency of failure. 
+
+From a design standpoint - how does result matter? (the fact that the vendor sold you a drive and the failure rate is twice of what was on the datasheet.) It doesn’t matter when building the mechanisms - say to mirror data onto drives. However, it matters when answering questions like “how many copies do we make”, “how often to scrub the data in the background”, “how worried do we have to be when 1 drive fails and we’re in the middle of recovery”. 
+ 
+What is the bathtub curve? Why relevant? Implications?
+“Infant mortality” in the beginning when some drives fail due to manufacturing defects that quickly manifest once the drive is put to work.
+Then it has a period of stability.
+As it gets older, problems arise and then it dies.
+
+What do Figures 3 and 4 tell us?
+There is no bathtub curve, things just get worse.
+
+What is Figure 7 about, and what do we conclude from it?
+They’re trying to study whether disk failures are independent.
+We want failure independence as system designers. Sadly, there is a correlation.
+ 
+Note takers: Yuan-Ting Hsieh and Anthony Rebello
+ 

@@ -1,0 +1,67 @@
+Early ethernet: bus-based => shared medium (one user at a time)
+Not scalable
+
+Massively Parallel Processors (MPPs)
+
+MPP Network
+* Hardware
+    * Low latency
+    * High bandwidth
+* Switched
+    * Topologies like trees and hypercube
+    * Scalable
+Transition to commodity switched-based networks (clusters)
+Problem: performance at app level is poor (even on better hardware, not much improvement)
+
+Active messages (since early 90s)
+* Theory: logP model (L stands for latency, o stands for overhead, g stands for max message rate, P stands for processors)
+    * RTT: 4o+2L
+    * How to lower overhead?
+        * Remove OS from data path (user-level networking)
+            * Gain
+                * Performance
+                    * Remove system calls involving trap
+                    * Memory management cost
+            * Loss
+                * Virtualization
+                * Protection
+    * Reliable
+    * Request/response
+U-Net
+* Low overhead
+* Protection (demux)
+* Not reliable
+* Not request/response
+
+Why user level?
+* Performance
+* Flexibility
+* Don’t have to be general
+
+U-Net Architecture
+* Endpoint
+    * Communication segment (message data)
+    * Queues <— client and network interfaces
+        * Send queue: forming message in CS, push the descriptor onto send queue
+        * Receive queue: has descriptors pointing at data in CS
+        * Free queue
+* Protection
+    * Tag
+        * Use OS to set up
+        * During communication, no OS involvement
+        * During receiving/demux, using tags to decide which process receive message
+
+Base U-Net
+* Limited size communication segment (pinned in memory)
+    * Implication: not real/true zero copy (“one copy”)
+    * Small message optimization: put data into descriptor
+* Kernel emulation
+    * One OS managed endpoint
+        * OS virtualizes endpoints for processes that can’t fit in communication segments
+    * Later: VM integration with endpoints 
+-100
+-200: interesting implementation: programmable network interface
+* Which memory to put queue in (either on host or on network interface)?
+    * Send (NI)
+    * Receive (Host)
+    * Free (NI)
