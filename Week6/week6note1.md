@@ -1,12 +1,14 @@
 # CS739 Week6-1 Note
 
-`@Lecturer:`
+`@Lecturer:`. He's an expert in NFS, and he's questions were very good for people who read the paper carefully, and also those who didn't : )
 
 He's lecture is even better than Remzi's : ) (though Remzi's are good too)
 
-## Lecture Detail
 
-### What to consider when designing a FS:
+
+## Lecture
+
+### What to consider when designing a FS
 
 1. Availability :  system should work when requested  
 2. Reliability  :  system should work as specified/expected
@@ -14,25 +16,31 @@ He's lecture is even better than Remzi's : ) (though Remzi's are good too)
 4. Safety   : system should work without catastrophic failure
 5. Security : system should work against accidental/deliberate intrusion
 
-### Demands for <u>File System Server</u>:
+
+
+### Demands for <u>File System Server</u>
 
 1. User can easily read/write on a file (just like they do on local)
 2. Server should support more than 10^5 users
 3. Server should be high performance: comparable to local disk
 
+<u>File System Server</u> is something like NFS and AFS that serves the whole cluster as a unified storage system.
+
+
+
 ### File System Server Expectation
 
-**Availability**: servicable at all time, in all place 
+**Availability**: servicable at *all time*, in *all place* 
 
-**Reliability**: correct data, complete data
+**Reliability**: FS should only store *correct data*, and if the data is stored it should be the *complete data*
 
 
 
-### Goals
+### Goal of the Design
 
 1. Failure and recovery should be <u>Transparent</u> to user. A <u>failure must not force operation in progress to termination</u>.
-2. Failure-free performance must not be penalized to provide high availbility.
-3. NFS client protocol implementation should not require modification to use HA-NFS server.
+2. Failure-free performance <u>must not be penalized to provide high availbility.</u>
+3. NFS client protocol implementation <u>should not require modification to use HA-NFS server</u>.
 
 The beauty of system: a simple, focus view to solve problem
 
@@ -50,7 +58,7 @@ The beauty of system: a simple, focus view to solve problem
 
 #### 1. Normal Operation
 
-==[!] Log operation==
+==//TODO: [!] Log operation (I forgot what he talked about here...)==
 
 ? What should we do for some **Non-idempotent operation**: e.g., `delete`, `unlink`
 
@@ -82,19 +90,19 @@ A! **Fencing**. If no fencing, the re-integration will never happen.
 
 
 
-### Changes
+### Changes that can be made
 
 1. Log operation: don't have to wait until metadata flush in.
 
-
-
-**?? Can you design HA-EXT4, etc. ?**
-
+==//TODO: I forgot if there're things underneath..==
 
 
 
+**Challenge: Can you design HA-EXT4, etc. ?**
 
 ### Performance: the Key Evaluations
+
+Some performance test we can think of when we want to benchmark the system:
 
 1. Speed and performance of take-over
    1. Log & cache size
@@ -102,6 +110,14 @@ A! **Fencing**. If no fencing, the re-integration will never happen.
 2. Speed of Reintegration
 3. Accuracy & speed of failure detection
 4. Performance at normal operation and when the take-over, reintegration happens.
+
+**What they actually evaluate:**
+
+1. (Section 4.1) The effect of disk logging
+2. (Section 4.2) The effect of Mirroring
+3. (Section 4.3) Take-over and Re-integration
+
+Why? becuase
 
 
 
@@ -113,9 +129,19 @@ A! **Fencing**. If no fencing, the re-integration will never happen.
 2. What option other than mirroring? RAID0123456
 3. What if the components are unreliable? **Consensus/vote**
 
----
 
 
+## Questions
+
+**Question 1.** What if both servers failed:
+
+**Answer 1.** Then there is no hope to recover the data. This model assume the probability of two server failed at the same time to be an extremely rare event (think of )
+
+==**Question 2.** How can you design HA-EXT4, etc.?==
+
+
+
+## Side Note
 
 **Idempotent**: 
 
