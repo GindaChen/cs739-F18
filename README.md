@@ -24,9 +24,21 @@ Drafts, as you can see, is put into the `draft` folder. They are unfinished, slo
 
 
 
-<!--## Calender-Note-->
+## TODOs
 
+Notes Update
 
+- [ ] Upload Week 1 Notes
+- [ ] Upload Week 2 Notes
+- [ ] Upload Week 3 Notes
+- [ ] Upload Week 4 Notes
+- [ ] Upload Week 5 Notes
+- [ ] Upload Week 6 Notes
+- [ ] Upload Week 7 Notes
+
+Additional Writing
+
+- [ ] Update week 5.2 Leases Note: Math interpretation.
 
 
 
@@ -60,4 +72,3 @@ Drafts, as you can see, is put into the `draft` folder. They are unfinished, slo
 
 ## Credit
 
-Also, credit to Remzi and also to me :) (the only way you put your)

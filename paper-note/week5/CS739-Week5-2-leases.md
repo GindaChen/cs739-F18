@@ -1,3 +1,5 @@
+`@author: Junda Chen`
+
 # CS739 Week 5-2 Leases
 
 Leases: An Efficient Fault-Tolerant Mechanism for Distributed File Cache Consistency
@@ -6,7 +8,15 @@ Cary G. Gray and David R. Cheriton, 1989
 
 # Summary
 
-Cache cause inconsistence. Lease can introduce efficient consistence to cache data. Short leases limit the impact of non-Byzantine failure, and increase the performance especially on large scale & high processor performance system.
+Cache cause inconsistency. 
+
+Lease introduce an efficient way to cache data and maintain consistency between caches and the file. 
+
+Short leases limit the impact of non-Byzantine failure, and increase the performance especially on large scale & high processor performance system.
+
+[TOC]
+
+
 
 # Questions
 
@@ -27,9 +37,17 @@ Cache cause inconsistence. Lease can introduce efficient consistence to cache da
 
 
 
+# Reminder
+
+1. I strongly suggest to read the class note first before reading this note. The original paper has many ~~strange~~ math that you might want to scream.
+2. Review [Poisson Process](https://en.wikipedia.org/wiki/Poisson_point_process) that the expected value of the arrival of event is actually the rate of Poisson Process. Meaning that $E(X) = \lambda $ if $X$ is  Poisson($\lambda$)
+3. Review the process of Unicast, Multicast, Broadcast, Anycast and maybe Geocast. Get an understanding of how the packet transfer.
+
 
 
 # Detail
+
+==//TODO: add the illustration to the math parts==
 
 ## 1 Introduction
 
@@ -40,11 +58,11 @@ Cache cause inconsistence. Lease can introduce efficient consistence to cache da
 
 
 
-File access characteristics?
+File access characteristics? ==What was I writing here...?==
+
+
 
 **Short-term leases provide near optimal efficiency for a large class of systems in spite of the fault-tolerance provisions**
-
-
 
 > In this paper, **leases** are proposedasaconsistencyprotocol that handles host and communication failures using <u>physical clocks</u>. An analytic model and an evaluation using **file access characteristics** of the V system show that **short-term leases provide near optimal efficiency for a large class of systems in spite of the fault-tolerance provisions.** 
 >
@@ -56,7 +74,7 @@ File access characteristics?
 
 **Lease**: holder can control the write.
 
-**Lease holder**
+**Lease holder**: The owner of the resource
 
 **Term** of the lease: lease time.
 
@@ -170,25 +188,25 @@ Assumption:
 
 ### 3.1 A Simple Analytic Model
 
-**Propagation Delay**: time of the first bit to travel from the sender to the receiver
-
-https://en.wikipedia.org/wiki/Propagation_delay
-
-
+**[Propagation Delay](https://en.wikipedia.org/wiki/Propagation_delay)**: time of the first bit to travel from the sender to the receiver.
 
 **Processing Time**: time for router to process the packet header
 
+
+
 #### Parameters
 
-$N$: # clients / caches
-$R$: read% for each client
-$W$: write% for each client
-$S$: # caches that share the file
-$m_{prop}$: propagation delay for message
-$m_{proc}$: processing delay. Time to process message on the router. This time is the **critical time** that does not include the time before message received or after message is sent (since the network flow will drive the message towards it).
-$\epsilon$: allowance of clock drift 
-$t_S$: lease term (at server)
-Each client’s reads and writes follow **Poisson distributions with rates R and W**, respectively
+- $N$: # clients / caches
+- $R$: read% for each client
+- $W$: write% for each client
+- $S$: # caches that share the file
+- $m_{prop}$: propagation delay for message
+- $m_{proc}$: processing delay. Time to process message on the router. This time is the **critical time** that does not include the time before message received or after message is sent (since the network flow will drive the message towards it).
+- $\epsilon$: allowance of clock drift 
+- $t_S$: lease term (at server)
+
+Each client’s reads ($R$) and writes($W$) follow **Poisson distributions with rates $R$ and $W$**, respectively
+
 There is **at most one lease per client** for the file.
 
 #### Model Variables
@@ -202,6 +220,21 @@ $2m_{prop}+4m_{proc}$ : unicast send + reply
 ##### Multicast
 
 $2m_{prop}+(n+3)m_{proc}$ : multicast send + n reply 
+
+[Explaination on piazza](https://piazza.com/class/jlo4totlie3ol?cid=40): Why $(n+3) m_{proc}$?
+
+```
+Following is my understanding of message processing sequence for multicast:
+1. one message at the sender => 1
+2. n receivers processing the msg in parallel => 1
+3. n receivers processing reply in parallel => 1
+4. sender receives n responses and have to process them sequentially one by one => n
+Hence, (n+3) processing delay
+
+
+```
+
+
 
 #####  Effective Lease term
 
