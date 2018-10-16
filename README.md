@@ -32,7 +32,7 @@ Notes Update
 - [ ] Upload Week 2 Notes
 - [ ] Upload Week 3 Notes
 - [ ] Upload Week 4 Notes
-- [ ] Upload Week 5 Notes
+- [ ] Upload Week 5.1 Notes (why it disappeared --- yet another mysterious fs problem??)
 - [ ] Upload Week 6 Notes
 - [ ] Upload Week 7 Notes
 
