@@ -1,6 +1,6 @@
 `@Author: Junda Chen`
 
-# CS739 - Week3-1: Clock
+# CS739 - Week3-2: Clock
 
 Time, Clocks, and the Ordering of Events in a Distributed System 
 

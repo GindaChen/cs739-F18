@@ -1,4 +1,4 @@
-# CS739 Week 6-1 HA-NFS
+# CS739 Week 6-1: HA-NFS
 
 A Highly Available Network File Server
 
@@ -111,9 +111,9 @@ HA-NFS node = primary server + secondary server
 
 `*: `The *Primary Server* does not mean *one of the two server is the primary server and the other is slave*. This concept is telling us that <u>the disk recognize one of the server as the primary</u>, and for balancing purpose, *the primary server for a disk is selected so that the total workload is balanced between the two servers.*
 
+==//TODO: These contents are written in the class note. I'm clearly sloppy here since some of the content below are even shown in the beginning of the pages... I will add them later I guess.==
+
 ### 3.1 Normal Operation
-
-
 
 ### 3.2 Take-Over
 

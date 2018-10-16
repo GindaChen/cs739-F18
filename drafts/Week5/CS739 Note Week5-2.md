@@ -1,18 +1,28 @@
 # CS739 Note Week5-2
 
-**Course Structure**
+# Summary
 
-1. Fundamentals
-2. Techniques: 
-   1. local node
-   2. distributed systems
+[TOC]
+
+**Review of the Course Structure**
+
+1. Fundamentals of Distributed System
+   1. Design Pattern 
+   2. System Failure
+   3. Network Communication
+   4. Time
+2. *[Now]* Techniques: 
+   1. Local node
+   2. `here ->` Distributed Systems
 
 **Today**: 
 
-1. NFS & idempotency
-2. Leases: (we have dealt with concurrency, but if one acquired a lock and died?)
+1. NFS & idempotency: How do we design simple, scalable, network file system  with idempotency guarantee?
+2. Leases: we have dealt with concurrency, but if one acquired a lock and died? **What do we do about accidents and fail prevention during concurrent events?**
 
-## NFS
+
+
+# NFS
 
 Distributed System back in the 1980s-1990s : client-server system
 
@@ -20,10 +30,8 @@ Distributed System back in the 1980s-1990s : client-server system
 
 ### **How to sacle server-side nodes?**
 
-[Figure here]
-
 1. Scale out: add more server nodes (introduce many complexities, more challenging)
-2. Scale  up: make the server more powerful (easy, not worry about replicate objects, caches, async, etc.)
+2. Scale up: make the server more powerful (easy, not worry about replicate objects, caches, async, etc.)
 
 
 
@@ -53,14 +61,12 @@ Why Generation # important: useful when across file deletion and reuse.
 
 
 
-Think of the idempotency:
+Think of the [idempotency](https://en.wikipedia.org/wiki/Idempotence):
 
-```shell
-read/write: should not have an implicit offset tracked by the os
-lookup: should not implicitly obtain a previous state
-stat/getattr
+- `read/write`: should not have an implicit offset tracked by the os
+- `lookup`: should not implicitly obtain a previous state
+- `stat/getattr`: should not alter the orginal content, should return the newest result.
 
-```
 
 
 
@@ -149,7 +155,7 @@ NFS: **idempotency** - Powerful protocol design
 
 
 
-## Lease
+# Lease
 
 > **Old man rambling about**
 >
@@ -165,7 +171,7 @@ NFS: **idempotency** - Powerful protocol design
 
 
 
-### Background Example: [AFS](http://pages.cs.wisc.edu/~remzi/OSTEP/dist-afs.pdf)
+## Background Example: [AFS](http://pages.cs.wisc.edu/~remzi/OSTEP/dist-afs.pdf)
 
 **Read/write all local**
 

@@ -1,6 +1,8 @@
-# Crack Open (Neural) Nets: Can We Make ML-Based Networked Systems More Trustworthy?
+# CS739 Week6-2 Note (10/12, F)
 
-## Speech Description
+Crack Open (Neural) Nets: Can We Make ML-Based Networked Systems More Trustworthy?
+
+## Description
 
 Marco Canini
 
@@ -9,44 +11,6 @@ Machine learning (ML) solutions to challenging networking problems are a promisi
 This raises a crucial question: **How do we ensure that learned models behave reliably and as intended?** ML solutions that cannot be trusted to do so are brittle and may not be deployed despite their performance benefits. <u>**We propose an approach to enhance the trustworthiness of ML solutions for networked systems. Our approach builds on innovations in interpretable ML tools.**</u> Given a black-box ML model, <u>interpretable ML methods offer explanations on any given input instance</u>. By integrating the explanations from these tools with operator’s domain knowledge, **our approach can verify that the ML model behaves as per operator expectations, detect misbehaviors and identify corrective actions**. To demonstrate our approach, we performed an in-depth case study on **Pensieve** (a recent neural video rate adaptation system) and identified four classes of undesired behaviors.
 
 Bio: Marco Canini is an assistant professor in Computer Science at KAUST. Marco obtained his Ph.D. in computer science and engineering from the University of Genoa in 2009 after spending the last year as a visiting student at the University of Cambridge, Computer Laboratory. He was a postdoctoral researcher at EPFL from 2009 to 2012 and after that a senior research scientist for one year at Deutsche Telekom Innovation Labs & TU Berlin. Before joining KAUST, he was an assistant professor at the Université catholique de Louvain. He also held positions at Intel, Microsoft, and Google.
-
-## Pre-read of some crucial articles
-
-### **In-Network Computation is a Dumb Idea Whose Time Has Come**
-
-#### 1-2. Introduction & Problem Articulation
-
-**Crux problem**: What should network computer? What kinds of computation should be delegated to the network?
-
-**Solution**: (user-defined) [Aggregation Function](https://en.wikipedia.org/wiki/Aggregate_function) (like MapReduce, ML, graph processing, stream processing) with several properties:
-
-- Reduce the ammount of data (reduce congestion)
-- Simple Arithemtic/logic operations (parallelizable)
-- commutative and associative functions (can be applied seperately)
-- often readily availble (transparent)
-
-**Challenge**: 
-
-1. Limited compute power
-2. Stringent constrains on packet processing time
-
-**Similar studies and differences**:
-
-1. Change network architecture [8, 21]
-2. Build switch chip [15]
-3. (Ours) flexible, programmable data planes
-
-**Model**: [DAIET](https://mcanini.github.io/papers/daiet.p-socc17.pdf)
-
-**Focus**: Judicious Network Computing 
-
-#### 4. Solution Sketch
-
-**Aggregation Tree (in a map-reduce environment)**: spanning tree covering all paths from all the mappers to reducer
-
-
-
----
 
 
 

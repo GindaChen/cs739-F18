@@ -1,8 +1,14 @@
-# CS739 Week6-1 Note
+# CS739 Week6-1 Note (10/10, W)
 
 `@Lecturer:`. He's an expert in NFS, and he's questions were very good for people who read the paper carefully, and also those who didn't : )
 
 He's lecture is even better than Remzi's : ) (though Remzi's are good too)
+
+## Summary
+
+
+
+[TOC]
 
 
 

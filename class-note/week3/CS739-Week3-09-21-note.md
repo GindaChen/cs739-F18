@@ -1,4 +1,4 @@
-# CS739 - Week3-1 Class Note (9/21, F)
+# CS739 - Week3-2 Class Note (9/21, F)
 
 # Digest of the class
 

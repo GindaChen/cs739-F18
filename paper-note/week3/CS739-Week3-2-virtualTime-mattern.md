@@ -1,6 +1,6 @@
 `@Author: Junda Chen`
 
-# CS739 - Week3-1 Note: Virtual
+# CS739 - Week3-2 Note: Virtual
 
 Virtual Time and Global States of Distributed Systems
 

@@ -12,38 +12,6 @@ Cache cause inconsistence. Lease can introduce efficient consistence to cache da
 
 **Q6 (due 10/5 before class):** Describe the trade-offs in setting lease length; what if the time is too short? too long?
 
-
-
-```
-When short lease term is [Bad]: 
-	1. Too short lease term will peanalize the write operation, but will do no good for the read operation. One exception being when the lease term is zero, which means we disable the lease for the machine. Then we don't suffer from the delay time when messages are transmitted to get the approval for the lease for each writer.
-	2. Never-modified files. You could have hold the lease forever (at least for a very long time). And the server could have actually terminate the lease and send you a message to terminate that.
-
-When long lease term is [Bad]:
-	1. Frequent machine disconnection (non-Byzantine failure). 
-	2. False sharing. When the lease holder doesn't really write the file but there are other machines waiting to write, there are significant amount of time wasted.
-
-When short lease term is [Good]:
-	1. When false sharing and Byzantine failure is more frequent. 
-	2. (set to zero) When no client is going to access the file before modification.
-	3. Reduce storage. Expired leases could be reclaimed by the server, and similar leases from a same machine could be merged to form different granuality of lease term, thus decrease the lease term storage.
-
-	
-When long lease term is [Good]:
-	Longer lease term fits in the situation when the files are not changed in a significant preiod of time, or when server can detect the modification and issue changes correspondingly. Examples in the paper include system binary file change (which the server can choose to terminate the lease once on its file is modified), system update, and other seldom-changing file.
-```
-
-
-
-
-
-
-
-**~~Basic~~ (Dumb) questions**
-
-1. What are the metrics of a Distributed System? [Performance, Consistency, ...]
-2. 
-
 **Pre-read questions**
 
 1. What is **Byzantine failure** and **Non-Byzantine failure**?
