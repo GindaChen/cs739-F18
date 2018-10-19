@@ -27,6 +27,11 @@ By maintaining portability, using XDR, RPC, and designing filesystem interface V
 
 # Questions
 
+:fire:Important
+
+1. What is idempotency? What are examples that is idempotent operation and those are not? What will happen if it is not?
+2. What are the hard issues in the implementation?
+
 **Pre-read questions**
 
 1. What is NFS? What is the purpose of designing a FS like NFS?
