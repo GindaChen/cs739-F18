@@ -26,7 +26,7 @@ Cheat sheet (2 side), [Old Exam](http://pages.cs.wisc.edu/~remzi/Classes/739/Fal
 - [x] Week6.2 - Guest Lecture: Machine learning in the 
 - [x] Week7.1 - 2PC - Butler Lampson, David Lomet
 - [ ] Week7.1 - Scalable, Distributed Data Structures for Internet Service Construction - Steven D. Gribble, Eric A. Brewer, Joseph M. Hellerstein, and David Culler
-- [ ] Week7.2 - Elections in a Distributed Computing System - Hector Garcia-Molina
+- [ ] ~~Week7.2 - Elections in a Distributed Computing System - Hector Garcia-Molina~~
 - [ ] Week7.2 - Probabilistically Bounded Staleness for Practical Partial Quorums
 
 
@@ -43,22 +43,32 @@ Cheat sheet (2 side), [Old Exam](http://pages.cs.wisc.edu/~remzi/Classes/739/Fal
 - Week2.2 - Datacenter RPCs can be General and Fast - Anuj Kalia, Michael Kaminsky, David G. Anderson
   - Basic Introduction (limited time)
 - Week2.2 - U-Net: A User-Level Network Interface for Parallel and Distributed Computing - Thorsten von Eicken, Anindya Basu, Vineet Buch, and Werner Vogels
+  - Detail
 - Week3.1 - Time, Clocks, and the Ordering of Events in a Distributed System - Leslie Lamport
+  - Detailed
 - Week3.1 - Virtual Time and Global States of Distributed Systems 􏰁- Friedemann Mattern
+  - Detailed
 - Week4.1 - Flash: An Efficient and Portable Web Server - Vivek S. Pai, Peter Druschel, and Willy Zwaenepoel
+  - Have some sense of how every works
 - Week4.1 - SEDA - SEDA: An Architecture for Well-Conditioned, Scalable Internet Services - Matt Welsh, David Culler, and Eric Brewer
+  - Have some sense of how every works
 - :fire:Week4.2 - ALICE: All File Systems Are Not Created Equal: On the Complexity of Crafting Crash-Consistent Applications 
+  - detail
 - :fire:Week5.1 - WiscKey: Separating Keys from Values in SSD-Conscious Storage
+  - detail
 - Week5.2 - Leases: An Efficient Fault-Tolerant Machanism for Distributed File Cache Consistency - Cray G. Gray and David R. Cheriton
+  - detail
 - Week5.2 - The Sun Network Filesystem: Design, Implementation and Experience - Russel Sandberg
+  - detail
 - :fire:Week6.1 - HANFS - Anupam Bhide, Elmootazbellah N. Elnozahy, Stephen P. Morgan
 - Week6.2 - Guest Lecture: Machine learning in the 
 - Week7.1 - 2PC - Butler Lampson, David Lomet
-  - Introduction of the Concepts 
+  - Focus on Introduction of the Concepts 
 - Week7.1 - Scalable, Distributed Data Structures for Internet Service Construction - Steven D. Gribble, Eric A. Brewer, Joseph M. Hellerstein, and David Culler
-- Week7.2 - Elections in a Distributed Computing System - Hector Garcia-Molina
+- ~~Week7.2 - Elections in a Distributed Computing System - Hector Garcia-Molina~~
 - Week7.2 - Probabilistically Bounded Staleness for Practical Partial Quorums
   - Introductions of the quorum (maybe not detail)
+  - Quorum + 2PC
 
 
 
